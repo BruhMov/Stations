@@ -1,0 +1,65 @@
+name: Deploy static dashboard to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Locate project directory
+        run: |
+          if [ -f scripts/build_data.py ]; then
+            echo "PROJ_DIR=." >> "$GITHUB_ENV"
+          elif [ -f metro-time-dashboard/scripts/build_data.py ]; then
+            echo "PROJ_DIR=metro-time-dashboard" >> "$GITHUB_ENV"
+          else
+            echo "::error::Could not find scripts/build_data.py in repo root or metro-time-dashboard/"
+            exit 1
+          fi
+
+      - name: Install build dependencies
+        run: pip install jinja2
+
+      - name: Build data/stations.json from source.txt
+        working-directory: ${{ env.PROJ_DIR }}
+        run: python scripts/build_data.py
+
+      - name: Export static site to dist/
+        working-directory: ${{ env.PROJ_DIR }}
+        run: python scripts/export_static.py
+
+      - name: Show exported files
+        working-directory: ${{ env.PROJ_DIR }}
+        run: ls -la dist dist/data && head -c 300 dist/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.PROJ_DIR }}/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
