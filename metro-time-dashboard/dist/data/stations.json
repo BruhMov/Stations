@@ -1,0 +1,1177 @@
+[
+  {
+    "station": "Тульская",
+    "to_tulskaya": 0,
+    "to_zil": 19
+  },
+  {
+    "station": "ЗИЛ",
+    "to_tulskaya": 19,
+    "to_zil": 0
+  },
+  {
+    "station": "Серпуховская / Добрынинская",
+    "to_tulskaya": 3,
+    "to_zil": 22
+  },
+  {
+    "station": "Автозаводская",
+    "to_tulskaya": 15,
+    "to_zil": 3
+  },
+  {
+    "station": "Нагатинская / Верхние котлы",
+    "to_tulskaya": 4,
+    "to_zil": 3
+  },
+  {
+    "station": "Полянка",
+    "to_tulskaya": 5,
+    "to_zil": 24
+  },
+  {
+    "station": "Дубровка",
+    "to_tulskaya": 20,
+    "to_zil": 5
+  },
+  {
+    "station": "Крымская",
+    "to_tulskaya": 18,
+    "to_zil": 5
+  },
+  {
+    "station": "Нагорная",
+    "to_tulskaya": 6,
+    "to_zil": 17
+  },
+  {
+    "station": "Александровский сад / Арбатская / Боровицкая / Библиотека им. Ленина",
+    "to_tulskaya": 7,
+    "to_zil": 26
+  },
+  {
+    "station": "Угрешская",
+    "to_tulskaya": 26,
+    "to_zil": 7
+  },
+  {
+    "station": "Октябрьская",
+    "to_tulskaya": 8,
+    "to_zil": 20
+  },
+  {
+    "station": "Павелецкая",
+    "to_tulskaya": 8,
+    "to_zil": 17
+  },
+  {
+    "station": "Нахимовский проспект",
+    "to_tulskaya": 8,
+    "to_zil": 19
+  },
+  {
+    "station": "Ленинский проспект / Площадь Гагарина",
+    "to_tulskaya": 16,
+    "to_zil": 9
+  },
+  {
+    "station": "Новохохловская",
+    "to_tulskaya": 28,
+    "to_zil": 9
+  },
+  {
+    "station": "Парк Культуры",
+    "to_tulskaya": 10,
+    "to_zil": 25
+  },
+  {
+    "station": "Таганская / Марксистская",
+    "to_tulskaya": 10,
+    "to_zil": 22
+  },
+  {
+    "station": "Тверская / Пушкинская / Чеховская",
+    "to_tulskaya": 10,
+    "to_zil": 24
+  },
+  {
+    "station": "Севастопольская / Каховская",
+    "to_tulskaya": 10,
+    "to_zil": 21
+  },
+  {
+    "station": "Площадь Революции / Охотный ряд / Театральная",
+    "to_tulskaya": 11,
+    "to_zil": 22
+  },
+  {
+    "station": "Смоленская",
+    "to_tulskaya": 11,
+    "to_zil": 30
+  },
+  {
+    "station": "Спортивная / Лужники",
+    "to_tulskaya": 21,
+    "to_zil": 12
+  },
+  {
+    "station": "Чертановская",
+    "to_tulskaya": 12,
+    "to_zil": 23
+  },
+  {
+    "station": "Трубная / Цветной бульвар",
+    "to_tulskaya": 12,
+    "to_zil": 29
+  },
+  {
+    "station": "Нижегородская",
+    "to_tulskaya": 26,
+    "to_zil": 12
+  },
+  {
+    "station": "Киевская",
+    "to_tulskaya": 13,
+    "to_zil": 27
+  },
+  {
+    "station": "Чкаловская / Курская",
+    "to_tulskaya": 13,
+    "to_zil": 25
+  },
+  {
+    "station": "Третьяковская / Новокузнецкая",
+    "to_tulskaya": 13,
+    "to_zil": 19
+  },
+  {
+    "station": "Шаболовская",
+    "to_tulskaya": 13,
+    "to_zil": 18
+  },
+  {
+    "station": "Варшавская",
+    "to_tulskaya": 13,
+    "to_zil": 24
+  },
+  {
+    "station": "Кропоткинская",
+    "to_tulskaya": 14,
+    "to_zil": 29
+  },
+  {
+    "station": "Арбатская",
+    "to_tulskaya": 14,
+    "to_zil": 31
+  },
+  {
+    "station": "Зюзино",
+    "to_tulskaya": 14,
+    "to_zil": 25
+  },
+  {
+    "station": "Менделеевская / Новослободская",
+    "to_tulskaya": 15,
+    "to_zil": 32
+  },
+  {
+    "station": "Кузнецкий мост / Лубянка",
+    "to_tulskaya": 15,
+    "to_zil": 27
+  },
+  {
+    "station": "Крестьянская застава / Пролетарская",
+    "to_tulskaya": 15,
+    "to_zil": 19
+  },
+  {
+    "station": "Маяковская",
+    "to_tulskaya": 15,
+    "to_zil": 26
+  },
+  {
+    "station": "Южная",
+    "to_tulskaya": 15,
+    "to_zil": 26
+  },
+  {
+    "station": "Краснопресненская / Баррикадная",
+    "to_tulskaya": 16,
+    "to_zil": 29
+  },
+  {
+    "station": "Комсомольская / Пл. трех вокзалов",
+    "to_tulskaya": 16,
+    "to_zil": 28
+  },
+  {
+    "station": "Китай-город",
+    "to_tulskaya": 16,
+    "to_zil": 24
+  },
+  {
+    "station": "Каширская",
+    "to_tulskaya": 16,
+    "to_zil": 23
+  },
+  {
+    "station": "Смоленская (Филевская)",
+    "to_tulskaya": 16,
+    "to_zil": 30
+  },
+  {
+    "station": "Кутузовская",
+    "to_tulskaya": 22,
+    "to_zil": 16
+  },
+  {
+    "station": "Римская / Площадь Ильича / Москва-Товарная / Серп и Молот",
+    "to_tulskaya": 16,
+    "to_zil": 22
+  },
+  {
+    "station": "Достоевская",
+    "to_tulskaya": 16,
+    "to_zil": 33
+  },
+  {
+    "station": "Технопарк",
+    "to_tulskaya": 18,
+    "to_zil": 16
+  },
+  {
+    "station": "Белорусская",
+    "to_tulskaya": 17,
+    "to_zil": 28
+  },
+  {
+    "station": "Сретенский бульвар / Чистые пруды / Тургеневская",
+    "to_tulskaya": 17,
+    "to_zil": 26
+  },
+  {
+    "station": "Бауманская",
+    "to_tulskaya": 17,
+    "to_zil": 31
+  },
+  {
+    "station": "Воронцовская / Калужская",
+    "to_tulskaya": 17,
+    "to_zil": 24
+  },
+  {
+    "station": "Пражская",
+    "to_tulskaya": 17,
+    "to_zil": 28
+  },
+  {
+    "station": "Савеловская",
+    "to_tulskaya": 17,
+    "to_zil": 31
+  },
+  {
+    "station": "Андроновка",
+    "to_tulskaya": 32,
+    "to_zil": 17
+  },
+  {
+    "station": "Улица 1905 года",
+    "to_tulskaya": 18,
+    "to_zil": 31
+  },
+  {
+    "station": "Волгоградский проспект",
+    "to_tulskaya": 18,
+    "to_zil": 25
+  },
+  {
+    "station": "Москва-Сити",
+    "to_tulskaya": 24,
+    "to_zil": 18
+  },
+  {
+    "station": "Парк Победы / Поклонная",
+    "to_tulskaya": 18,
+    "to_zil": 21
+  },
+  {
+    "station": "Академическая",
+    "to_tulskaya": 19,
+    "to_zil": 18
+  },
+  {
+    "station": "Проспект Мира",
+    "to_tulskaya": 19,
+    "to_zil": 30
+  },
+  {
+    "station": "Фрунзенская",
+    "to_tulskaya": 19,
+    "to_zil": 27
+  },
+  {
+    "station": "Текстильщики",
+    "to_tulskaya": 22,
+    "to_zil": 19
+  },
+  {
+    "station": "Коломенская",
+    "to_tulskaya": 21,
+    "to_zil": 19
+  },
+  {
+    "station": "Электрозаводская",
+    "to_tulskaya": 19,
+    "to_zil": 28
+  },
+  {
+    "station": "Авиамоторная",
+    "to_tulskaya": 19,
+    "to_zil": 21
+  },
+  {
+    "station": "Ул. академика Янгеля",
+    "to_tulskaya": 19,
+    "to_zil": 30
+  },
+  {
+    "station": "Дмитровская",
+    "to_tulskaya": 19,
+    "to_zil": 36
+  },
+  {
+    "station": "Марьина роща",
+    "to_tulskaya": 19,
+    "to_zil": 34
+  },
+  {
+    "station": "Кожуховская",
+    "to_tulskaya": 22,
+    "to_zil": 19
+  },
+  {
+    "station": "Калитники",
+    "to_tulskaya": 29,
+    "to_zil": 19
+  },
+  {
+    "station": "Новаторская",
+    "to_tulskaya": 19,
+    "to_zil": 30
+  },
+  {
+    "station": "Красные ворота",
+    "to_tulskaya": 20,
+    "to_zil": 31
+  },
+  {
+    "station": "Беговая",
+    "to_tulskaya": 20,
+    "to_zil": 32
+  },
+  {
+    "station": "Петровский парк / Динамо",
+    "to_tulskaya": 20,
+    "to_zil": 30
+  },
+  {
+    "station": "Кантемировская",
+    "to_tulskaya": 20,
+    "to_zil": 26
+  },
+  {
+    "station": "Студенческая",
+    "to_tulskaya": 20,
+    "to_zil": 24
+  },
+  {
+    "station": "Профсоюзная",
+    "to_tulskaya": 21,
+    "to_zil": 20
+  },
+  {
+    "station": "Шоссе Энтузиастов",
+    "to_tulskaya": 22,
+    "to_zil": 20
+  },
+  {
+    "station": "Шелепиха",
+    "to_tulskaya": 28,
+    "to_zil": 20
+  },
+  {
+    "station": "Стахановская",
+    "to_tulskaya": 34,
+    "to_zil": 20
+  },
+  {
+    "station": "Кленовый бульвар",
+    "to_tulskaya": 20,
+    "to_zil": 28
+  },
+  {
+    "station": "Перово / Чухлинка",
+    "to_tulskaya": 29,
+    "to_zil": 20
+  },
+  {
+    "station": "Проспект Вернадского",
+    "to_tulskaya": 21,
+    "to_zil": 32
+  },
+  {
+    "station": "Семеновская",
+    "to_tulskaya": 21,
+    "to_zil": 34
+  },
+  {
+    "station": "Сухаревская",
+    "to_tulskaya": 21,
+    "to_zil": 28
+  },
+  {
+    "station": "Аннино",
+    "to_tulskaya": 21,
+    "to_zil": 32
+  },
+  {
+    "station": "Тимирязевская",
+    "to_tulskaya": 21,
+    "to_zil": 38
+  },
+  {
+    "station": "Красносельская",
+    "to_tulskaya": 22,
+    "to_zil": 34
+  },
+  {
+    "station": "Деловой центр",
+    "to_tulskaya": 22,
+    "to_zil": 24
+  },
+  {
+    "station": "Славянский бульвар",
+    "to_tulskaya": 22,
+    "to_zil": 36
+  },
+  {
+    "station": "Новые Черемушки",
+    "to_tulskaya": 23,
+    "to_zil": 22
+  },
+  {
+    "station": "Соколиная Гора",
+    "to_tulskaya": 32,
+    "to_zil": 22
+  },
+  {
+    "station": "Бутырская / Останкино",
+    "to_tulskaya": 22,
+    "to_zil": 39
+  },
+  {
+    "station": "Полежаевская / Хорошёво / Хорошевская",
+    "to_tulskaya": 23,
+    "to_zil": 23
+  },
+  {
+    "station": "Аэропорт",
+    "to_tulskaya": 23,
+    "to_zil": 34
+  },
+  {
+    "station": "Царицыно",
+    "to_tulskaya": 23,
+    "to_zil": 29
+  },
+  {
+    "station": "Печатники",
+    "to_tulskaya": 26,
+    "to_zil": 23
+  },
+  {
+    "station": "Минская",
+    "to_tulskaya": 23,
+    "to_zil": 24
+  },
+  {
+    "station": "Мичуринский проспект",
+    "to_tulskaya": 23,
+    "to_zil": 34
+  },
+  {
+    "station": "Окская",
+    "to_tulskaya": 37,
+    "to_zil": 23
+  },
+  {
+    "station": "Люблино (Кольцевая)",
+    "to_tulskaya": 33,
+    "to_zil": 23
+  },
+  {
+    "station": "Нагатинский затон",
+    "to_tulskaya": 23,
+    "to_zil": 26
+  },
+  {
+    "station": "Кусково",
+    "to_tulskaya": 32,
+    "to_zil": 23
+  },
+  {
+    "station": "Сокольники / Митьково",
+    "to_tulskaya": 24,
+    "to_zil": 31
+  },
+  {
+    "station": "Воробьевы горы",
+    "to_tulskaya": 24,
+    "to_zil": 28
+  },
+  {
+    "station": "Измайлово / Партизанская",
+    "to_tulskaya": 24,
+    "to_zil": 24
+  },
+  {
+    "station": "Рижская",
+    "to_tulskaya": 24,
+    "to_zil": 32
+  },
+  {
+    "station": "Беляево",
+    "to_tulskaya": 24,
+    "to_zil": 27
+  },
+  {
+    "station": "Улица Старокачаловская / Бульвар Дмитрия Донского",
+    "to_tulskaya": 24,
+    "to_zil": 35
+  },
+  {
+    "station": "Петровско-Разумовская",
+    "to_tulskaya": 24,
+    "to_zil": 41
+  },
+  {
+    "station": "Фонвизинская",
+    "to_tulskaya": 24,
+    "to_zil": 41
+  },
+  {
+    "station": "Кузьминки",
+    "to_tulskaya": 25,
+    "to_zil": 29
+  },
+  {
+    "station": "Сокол",
+    "to_tulskaya": 25,
+    "to_zil": 36
+  },
+  {
+    "station": "Фили",
+    "to_tulskaya": 25,
+    "to_zil": 25
+  },
+  {
+    "station": "Кунцевская",
+    "to_tulskaya": 25,
+    "to_zil": 34
+  },
+  {
+    "station": "Перово",
+    "to_tulskaya": 25,
+    "to_zil": 31
+  },
+  {
+    "station": "Зорге",
+    "to_tulskaya": 35,
+    "to_zil": 25
+  },
+  {
+    "station": "Лефортово",
+    "to_tulskaya": 26,
+    "to_zil": 25
+  },
+  {
+    "station": "Аминьевская",
+    "to_tulskaya": 25,
+    "to_zil": 29
+  },
+  {
+    "station": "Университет Дружбы Народов",
+    "to_tulskaya": 25,
+    "to_zil": 36
+  },
+  {
+    "station": "Плющево",
+    "to_tulskaya": 36,
+    "to_zil": 25
+  },
+  {
+    "station": "Панфиловская / Октябрьское поле",
+    "to_tulskaya": 26,
+    "to_zil": 27
+  },
+  {
+    "station": "Орехово",
+    "to_tulskaya": 26,
+    "to_zil": 32
+  },
+  {
+    "station": "Коньково",
+    "to_tulskaya": 26,
+    "to_zil": 29
+  },
+  {
+    "station": "Новогиреево",
+    "to_tulskaya": 28,
+    "to_zil": 26
+  },
+  {
+    "station": "Владыкино",
+    "to_tulskaya": 26,
+    "to_zil": 43
+  },
+  {
+    "station": "Волжская",
+    "to_tulskaya": 29,
+    "to_zil": 26
+  },
+  {
+    "station": "ЦСКА",
+    "to_tulskaya": 26,
+    "to_zil": 28
+  },
+  {
+    "station": "Депо",
+    "to_tulskaya": 36,
+    "to_zil": 26
+  },
+  {
+    "station": "Сортировочная",
+    "to_tulskaya": 28,
+    "to_zil": 26
+  },
+  {
+    "station": "Локомотив / Черкизовская",
+    "to_tulskaya": 31,
+    "to_zil": 27
+  },
+  {
+    "station": "Университет",
+    "to_tulskaya": 27,
+    "to_zil": 31
+  },
+  {
+    "station": "Измайловская",
+    "to_tulskaya": 27,
+    "to_zil": 36
+  },
+  {
+    "station": "Алексеевская",
+    "to_tulskaya": 27,
+    "to_zil": 35
+  },
+  {
+    "station": "Окружная",
+    "to_tulskaya": 27,
+    "to_zil": 43
+  },
+  {
+    "station": "Ломоносовский проспект",
+    "to_tulskaya": 27,
+    "to_zil": 31
+  },
+  {
+    "station": "Юго-Восточная",
+    "to_tulskaya": 41,
+    "to_zil": 27
+  },
+  {
+    "station": "Матвеевская",
+    "to_tulskaya": 29,
+    "to_zil": 27
+  },
+  {
+    "station": "Преображенская площадь",
+    "to_tulskaya": 28,
+    "to_zil": 35
+  },
+  {
+    "station": "Рязанский проспект / Вешняки",
+    "to_tulskaya": 28,
+    "to_zil": 29
+  },
+  {
+    "station": "Войковская / Балтийская",
+    "to_tulskaya": 28,
+    "to_zil": 33
+  },
+  {
+    "station": "Домодедовская",
+    "to_tulskaya": 28,
+    "to_zil": 34
+  },
+  {
+    "station": "Багратионовская",
+    "to_tulskaya": 28,
+    "to_zil": 28
+  },
+  {
+    "station": "Молодежная",
+    "to_tulskaya": 28,
+    "to_zil": 40
+  },
+  {
+    "station": "Давыдково",
+    "to_tulskaya": 28,
+    "to_zil": 39
+  },
+  {
+    "station": "Юго-западная",
+    "to_tulskaya": 29,
+    "to_zil": 37
+  },
+  {
+    "station": "Щукинская",
+    "to_tulskaya": 29,
+    "to_zil": 35
+  },
+  {
+    "station": "ВДНХ",
+    "to_tulskaya": 29,
+    "to_zil": 37
+  },
+  {
+    "station": "Теплый стан",
+    "to_tulskaya": 29,
+    "to_zil": 32
+  },
+  {
+    "station": "Отрадное",
+    "to_tulskaya": 29,
+    "to_zil": 46
+  },
+  {
+    "station": "Люблино",
+    "to_tulskaya": 32,
+    "to_zil": 29
+  },
+  {
+    "station": "Новокосино / Реутов",
+    "to_tulskaya": 32,
+    "to_zil": 29
+  },
+  {
+    "station": "Лесопарковая",
+    "to_tulskaya": 29,
+    "to_zil": 40
+  },
+  {
+    "station": "Раменки",
+    "to_tulskaya": 29,
+    "to_zil": 33
+  },
+  {
+    "station": "Верхние Лихоборы",
+    "to_tulskaya": 29,
+    "to_zil": 46
+  },
+  {
+    "station": "Народное ополчение",
+    "to_tulskaya": 29,
+    "to_zil": 29
+  },
+  {
+    "station": "Перерва",
+    "to_tulskaya": 39,
+    "to_zil": 29
+  },
+  {
+    "station": "Генерала Тюленева",
+    "to_tulskaya": 29,
+    "to_zil": 40
+  },
+  {
+    "station": "Бульвар Рокоссовского",
+    "to_tulskaya": 34,
+    "to_zil": 30
+  },
+  {
+    "station": "Зябликово / Красногвардейская",
+    "to_tulskaya": 30,
+    "to_zil": 36
+  },
+  {
+    "station": "Филевский парк",
+    "to_tulskaya": 30,
+    "to_zil": 30
+  },
+  {
+    "station": "Пионерская",
+    "to_tulskaya": 30,
+    "to_zil": 32
+  },
+  {
+    "station": "Косино / Лермонтовский проспект",
+    "to_tulskaya": 35,
+    "to_zil": 30
+  },
+  {
+    "station": "Стрешнево",
+    "to_tulskaya": 37,
+    "to_zil": 30
+  },
+  {
+    "station": "Тестовская (Москва-Сити)",
+    "to_tulskaya": 30,
+    "to_zil": 34
+  },
+  {
+    "station": "Гражданская",
+    "to_tulskaya": 30,
+    "to_zil": 41
+  },
+  {
+    "station": "Выхино",
+    "to_tulskaya": 31,
+    "to_zil": 32
+  },
+  {
+    "station": "Водный стадион",
+    "to_tulskaya": 31,
+    "to_zil": 42
+  },
+  {
+    "station": "Крылатское",
+    "to_tulskaya": 31,
+    "to_zil": 43
+  },
+  {
+    "station": "Первомайская",
+    "to_tulskaya": 31,
+    "to_zil": 40
+  },
+  {
+    "station": "Улица Скобелевская",
+    "to_tulskaya": 31,
+    "to_zil": 42
+  },
+  {
+    "station": "Селигерская",
+    "to_tulskaya": 31,
+    "to_zil": 48
+  },
+  {
+    "station": "Тютчевская",
+    "to_tulskaya": 31,
+    "to_zil": 42
+  },
+  {
+    "station": "Ясенево",
+    "to_tulskaya": 32,
+    "to_zil": 35
+  },
+  {
+    "station": "Битцевский парк / Новоясеневская",
+    "to_tulskaya": 32,
+    "to_zil": 37
+  },
+  {
+    "station": "Бибирево",
+    "to_tulskaya": 32,
+    "to_zil": 49
+  },
+  {
+    "station": "Братиславская",
+    "to_tulskaya": 35,
+    "to_zil": 32
+  },
+  {
+    "station": "Бульвар Адмирала Ушакова",
+    "to_tulskaya": 32,
+    "to_zil": 43
+  },
+  {
+    "station": "Спартак",
+    "to_tulskaya": 32,
+    "to_zil": 38
+  },
+  {
+    "station": "Озерная",
+    "to_tulskaya": 32,
+    "to_zil": 40
+  },
+  {
+    "station": "Мневники",
+    "to_tulskaya": 32,
+    "to_zil": 32
+  },
+  {
+    "station": "Курьяново",
+    "to_tulskaya": 38,
+    "to_zil": 32
+  },
+  {
+    "station": "Очаково",
+    "to_tulskaya": 34,
+    "to_zil": 32
+  },
+  {
+    "station": "Щелковская",
+    "to_tulskaya": 33,
+    "to_zil": 42
+  },
+  {
+    "station": "Ботанический сад",
+    "to_tulskaya": 33,
+    "to_zil": 39
+  },
+  {
+    "station": "Тропарево",
+    "to_tulskaya": 33,
+    "to_zil": 41
+  },
+  {
+    "station": "Белокаменная",
+    "to_tulskaya": 42,
+    "to_zil": 33
+  },
+  {
+    "station": "Улица Дмитриевского",
+    "to_tulskaya": 43,
+    "to_zil": 33
+  },
+  {
+    "station": "Рабочий поселок",
+    "to_tulskaya": 33,
+    "to_zil": 42
+  },
+  {
+    "station": "Терехово",
+    "to_tulskaya": 33,
+    "to_zil": 34
+  },
+  {
+    "station": "Яхромская",
+    "to_tulskaya": 33,
+    "to_zil": 50
+  },
+  {
+    "station": "Никольское",
+    "to_tulskaya": 42,
+    "to_zil": 33
+  },
+  {
+    "station": "Речной вокзал",
+    "to_tulskaya": 34,
+    "to_zil": 45
+  },
+  {
+    "station": "Марьино",
+    "to_tulskaya": 37,
+    "to_zil": 34
+  },
+  {
+    "station": "Улица Горчакова",
+    "to_tulskaya": 34,
+    "to_zil": 45
+  },
+  {
+    "station": "Красный Балтиец",
+    "to_tulskaya": 34,
+    "to_zil": 39
+  },
+  {
+    "station": "Москворечье",
+    "to_tulskaya": 36,
+    "to_zil": 34
+  },
+  {
+    "station": "Корниловская",
+    "to_tulskaya": 34,
+    "to_zil": 45
+  },
+  {
+    "station": "Тушинская",
+    "to_tulskaya": 35,
+    "to_zil": 41
+  },
+  {
+    "station": "Свиблово",
+    "to_tulskaya": 35,
+    "to_zil": 43
+  },
+  {
+    "station": "Алтуфьево",
+    "to_tulskaya": 35,
+    "to_zil": 52
+  },
+  {
+    "station": "Шипиловская",
+    "to_tulskaya": 35,
+    "to_zil": 39
+  },
+  {
+    "station": "Алма-Атинская",
+    "to_tulskaya": 35,
+    "to_zil": 41
+  },
+  {
+    "station": "Лихоборы",
+    "to_tulskaya": 35,
+    "to_zil": 40
+  },
+  {
+    "station": "Лухмановская",
+    "to_tulskaya": 45,
+    "to_zil": 35
+  },
+  {
+    "station": "Говорово",
+    "to_tulskaya": 35,
+    "to_zil": 43
+  },
+  {
+    "station": "Покровское",
+    "to_tulskaya": 35,
+    "to_zil": 41
+  },
+  {
+    "station": "Мещерская",
+    "to_tulskaya": 37,
+    "to_zil": 35
+  },
+  {
+    "station": "Бунинская аллея",
+    "to_tulskaya": 36,
+    "to_zil": 47
+  },
+  {
+    "station": "Румянцево",
+    "to_tulskaya": 36,
+    "to_zil": 44
+  },
+  {
+    "station": "Коптево",
+    "to_tulskaya": 42,
+    "to_zil": 36
+  },
+  {
+    "station": "Ростокино",
+    "to_tulskaya": 40,
+    "to_zil": 36
+  },
+  {
+    "station": "Беломорская",
+    "to_tulskaya": 36,
+    "to_zil": 47
+  },
+  {
+    "station": "Сетунь",
+    "to_tulskaya": 36,
+    "to_zil": 45
+  },
+  {
+    "station": "Лианозово",
+    "to_tulskaya": 36,
+    "to_zil": 53
+  },
+  {
+    "station": "Салтыковская",
+    "to_tulskaya": 45,
+    "to_zil": 36
+  },
+  {
+    "station": "Борисово",
+    "to_tulskaya": 37,
+    "to_zil": 37
+  },
+  {
+    "station": "Ухтомская",
+    "to_tulskaya": 39,
+    "to_zil": 37
+  },
+  {
+    "station": "Сходненская",
+    "to_tulskaya": 38,
+    "to_zil": 44
+  },
+  {
+    "station": "Бабушкинская",
+    "to_tulskaya": 38,
+    "to_zil": 46
+  },
+  {
+    "station": "Жулебино",
+    "to_tulskaya": 38,
+    "to_zil": 38
+  },
+  {
+    "station": "Ховрино",
+    "to_tulskaya": 38,
+    "to_zil": 49
+  },
+  {
+    "station": "Некрасовка",
+    "to_tulskaya": 48,
+    "to_zil": 38
+  },
+  {
+    "station": "Солнцево",
+    "to_tulskaya": 38,
+    "to_zil": 46
+  },
+  {
+    "station": "Дегунино",
+    "to_tulskaya": 38,
+    "to_zil": 51
+  },
+  {
+    "station": "Красный строитель",
+    "to_tulskaya": 38,
+    "to_zil": 44
+  },
+  {
+    "station": "Коммунарка",
+    "to_tulskaya": 38,
+    "to_zil": 49
+  },
+  {
+    "station": "Солнечная",
+    "to_tulskaya": 40,
+    "to_zil": 38
+  },
+  {
+    "station": "Моссельмаш",
+    "to_tulskaya": 38,
+    "to_zil": 47
+  },
+  {
+    "station": "Строгино",
+    "to_tulskaya": 39,
+    "to_zil": 51
+  },
+  {
+    "station": "Саларьево",
+    "to_tulskaya": 39,
+    "to_zil": 47
+  },
+  {
+    "station": "Немчиновка",
+    "to_tulskaya": 39,
+    "to_zil": 48
+  },
+  {
+    "station": "Физтех",
+    "to_tulskaya": 39,
+    "to_zil": 56
+  },
+  {
+    "station": "Кучино",
+    "to_tulskaya": 48,
+    "to_zil": 39
+  }
+]
