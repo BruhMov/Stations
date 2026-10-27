@@ -2,123 +2,289 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f4f5f7" id="themeColorMeta" />
   <title>Метро: Тульская / ЗИЛ</title>
+  <script>
+    // Apply saved theme before first paint to avoid flash of wrong theme.
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        if (!saved) {
+          saved = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = saved;
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
   <style>
     :root {
-      color-scheme: light;
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --border: #e5e7eb;
+      --row-line: #edf0f3;
+      --text: #101215;
+      --muted: #5c6470;
+      --accent: #d81e05;
+      --accent-contrast: #ffffff;
+      --input-bg: #ffffff;
+      --thumb-bg: rgba(255, 255, 255, .85);
+      --best-bg: #dcfce7;
+      --best-fg: #166534;
+      --ok-bg: #fef3c7;
+      --ok-fg: #92400e;
+      --far-bg: #fee2e2;
+      --far-fg: #991b1b;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .06);
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0b0d12;
+      --surface: #151823;
+      --border: #262b3a;
+      --row-line: #20242f;
+      --text: #e7eaf0;
+      --muted: #9aa3b2;
+      --accent: #ff5349;
+      --accent-contrast: #160706;
+      --input-bg: #1b1f2b;
+      --thumb-bg: rgba(21, 24, 35, .85);
+      --best-bg: #10321f;
+      --best-fg: #6ee7a0;
+      --ok-bg: #3a2c10;
+      --ok-fg: #fcd34d;
+      --far-bg: #3b1517;
+      --far-fg: #fca5a5;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f4f5f7;
-      color: #101215;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background .25s ease, color .25s ease;
+      min-height: 100dvh;
     }
 
     .container {
       max-width: 1150px;
       margin: 0 auto;
-      padding: 24px;
+      padding: 16px;
+      padding-inline: max(16px, env(safe-area-inset-left));
+      padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+
+    .header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 4px;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
+      margin: 0 0 6px;
+      font-size: clamp(20px, 5.5vw, 28px);
+      line-height: 1.2;
     }
 
     .sub {
-      margin: 0 0 20px;
-      color: #5c6470;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
     }
+
+    .theme-toggle {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      transition: transform .15s ease, background .25s ease;
+      touch-action: manipulation;
+    }
+
+    .theme-toggle:active {
+      transform: scale(.92);
+    }
+
+    .icon-moon { display: none; }
+    .icon-sun  { display: block; }
+    :root[data-theme="dark"] .icon-moon { display: block; }
+    :root[data-theme="dark"] .icon-sun  { display: none; }
 
     .panel {
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
-      margin-bottom: 16px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      transition: background .25s ease, border-color .25s ease;
     }
 
+    /* Mobile-first: single column, big touch targets */
     .controls {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 12px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     label {
       display: block;
       font-size: 13px;
-      color: #5c6470;
+      color: var(--muted);
       margin-bottom: 6px;
     }
 
     input,
     select {
       width: 100%;
-      min-height: 42px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      padding: 0 12px;
+      min-height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
       font: inherit;
-      background: #fff;
-      box-sizing: border-box;
+      font-size: 16px; /* prevents iOS zoom-on-focus */
+      background: var(--input-bg);
+      color: var(--text);
+      transition: border-color .15s ease, background .25s ease;
+    }
+
+    input:focus-visible,
+    select:focus-visible,
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     input[type="range"] {
       padding: 0;
       border: none;
-      height: auto;
+      height: 32px;
+      background: transparent;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .range-row input[type="range"] {
+      flex: 1;
     }
 
     .range-value {
       font-weight: 700;
+      font-size: 15px;
+      min-width: 64px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+
+    .chip[aria-pressed="true"],
+    .chip:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-contrast);
     }
 
     .meta {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      color: #5c6470;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 13px;
       margin-bottom: 10px;
     }
 
-    .table-wrap {
-      overflow: auto;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
+    .meta strong {
+      color: var(--text);
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
+    /* On small screens render data as cards instead of a wide table */
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    th,
-    td {
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
       padding: 12px 14px;
-      border-bottom: 1px solid #edf0f3;
-      text-align: left;
-      vertical-align: middle;
+      box-shadow: var(--shadow);
+      transition: background .25s ease, border-color .25s ease;
     }
 
-    th {
-      background: #fafafa;
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .station {
       font-weight: 650;
+      font-size: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .cell-label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
     }
 
     .badge {
@@ -131,43 +297,94 @@
       font-size: 13px;
     }
 
-    .best {
-      background: #dcfce7;
-      color: #166534;
+    .badge.block {
+      width: 100%;
+      min-width: 0;
     }
 
-    .ok {
-      background: #fef3c7;
-      color: #92400e;
+    .best { background: var(--best-bg); color: var(--best-fg); }
+    .ok   { background: var(--ok-bg);   color: var(--ok-fg); }
+    .far  { background: var(--far-bg);  color: var(--far-fg); }
+
+    .table-wrap {
+      display: none;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overscroll-behavior-x: contain;
     }
 
-    .far {
-      background: #fee2e2;
-      color: #991b1b;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--row-line);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
     }
 
     .empty {
       padding: 24px;
-      color: #6b7280;
+      color: var(--muted);
+      text-align: center;
     }
 
-    @media (max-width: 900px) {
-      .controls {
-        grid-template-columns: 1fr;
-      }
+    @media (min-width: 640px) {
+      .container { padding: 24px; }
+      .controls { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .controls { grid-template-columns: 2fr 1fr 1fr 1fr; }
+      .cards { display: none; }
+      .table-wrap { display: block; }
+      .meta { flex-direction: row; justify-content: space-between; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Станции метро: до Тульской или ЗИЛ</h1>
+    <div class="header-row">
+      <h1>Станции метро: до&nbsp;Тульской или&nbsp;ЗИЛ</h1>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
     <p class="sub">Локальный дашборд на FastAPI: поиск, фильтр по времени и сортировка.</p>
 
     <div class="panel">
       <div class="controls">
         <div>
           <label for="q">Поиск станции</label>
-          <input id="q" type="search" placeholder="Например: Павелецкая" />
+          <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Например: Павелецкая" />
         </div>
 
         <div>
@@ -180,10 +397,17 @@
         </div>
 
         <div>
-          <label for="max_minutes">
-            Лимит времени: <span id="maxLabel" class="range-value">40 мин</span>
-          </label>
-          <input id="max_minutes" type="range" min="0" max="60" step="1" value="40" />
+          <label for="max_minutes">Лимит времени</label>
+          <div class="range-row">
+            <input id="max_minutes" type="range" min="0" max="60" step="1" value="40" />
+            <span id="maxLabel" class="range-value">40 мин</span>
+          </div>
+          <div class="chips" role="group" aria-label="Быстрые лимиты">
+            <button type="button" class="chip" data-minutes="10">10 мин</button>
+            <button type="button" class="chip" data-minutes="20">20 мин</button>
+            <button type="button" class="chip" data-minutes="30">30 мин</button>
+            <button type="button" class="chip" data-minutes="40">40 мин</button>
+          </div>
         </div>
 
         <div>
@@ -203,6 +427,10 @@
       <span>Показываются станции, где время до выбранной цели не превышает лимит.</span>
     </div>
 
+    <!-- Cards view (mobile) -->
+    <div id="cards" class="cards" aria-live="polite"></div>
+
+    <!-- Table view (desktop) -->
     <div class="table-wrap">
       <table>
         <thead>
@@ -216,13 +444,46 @@
         </thead>
         <tbody id="tbody"></tbody>
       </table>
-      <div id="empty" class="empty" hidden>
-        Ничего не найдено. Попробуйте увеличить лимит времени или изменить поиск.
-      </div>
+    </div>
+
+    <div id="empty" class="empty panel" hidden>
+      Ничего не найдено. Попробуйте увеличить лимит времени или изменить поиск.
     </div>
   </div>
 
   <script>
+    // ---------- Theme toggle ----------
+    const themeToggle = document.getElementById("themeToggle");
+    const themeColorMeta = document.getElementById("themeColorMeta");
+
+    function currentTheme() {
+      return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    }
+
+    function syncThemeColor() {
+      themeColorMeta.setAttribute("content", currentTheme() === "dark" ? "#0b0d12" : "#f4f5f7");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncThemeColor();
+    });
+
+    // Follow OS changes only when the user hasn't chosen manually.
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (err) {}
+      if (!saved) {
+        document.documentElement.dataset.theme = e.matches ? "dark" : "light";
+        syncThemeColor();
+      }
+    });
+
+    syncThemeColor();
+
+    // ---------- Data loading ----------
     // Static fallback: when the page is served without a backend (e.g. GitHub Pages),
     // we load data/stations.json directly and filter/sort in the browser.
     let staticStations = null;
@@ -288,8 +549,10 @@
     const maxLabel = document.getElementById("maxLabel");
     const sort = document.getElementById("sort");
     const tbody = document.getElementById("tbody");
+    const cards = document.getElementById("cards");
     const count = document.getElementById("count");
     const empty = document.getElementById("empty");
+    const chips = Array.from(document.querySelectorAll(".chip"));
 
     function debounce(fn, ms = 250) {
       let timer;
@@ -307,20 +570,31 @@
         .replaceAll('"', "&quot;");
     }
 
+    function badgeClass(minutes) {
+      if (minutes === null || minutes === undefined) return "far";
+      if (minutes <= 10) return "best";
+      if (minutes <= 25) return "ok";
+      return "far";
+    }
+
     function badge(minutes) {
       if (minutes === null || minutes === undefined) {
         return `<span class="badge far">—</span>`;
       }
+      return `<span class="badge ${badgeClass(minutes)}">${minutes} мин</span>`;
+    }
 
-      let cls = "far";
-
-      if (minutes <= 10) {
-        cls = "best";
-      } else if (minutes <= 25) {
-        cls = "ok";
+    function cardBadge(minutes) {
+      if (minutes === null || minutes === undefined) {
+        return `<span class="badge block far">—</span>`;
       }
+      return `<span class="badge block ${badgeClass(minutes)}">${minutes} мин</span>`;
+    }
 
-      return `<span class="badge ${cls}">${minutes} мин</span>`;
+    function updateChips() {
+      chips.forEach((chip) => {
+        chip.setAttribute("aria-pressed", String(Number(chip.dataset.minutes) === Number(maxMinutes.value)));
+      });
     }
 
     async function loadData() {
@@ -351,10 +625,11 @@
         }
 
         render(stations);
-        count.textContent = `Найдено: ${stations.length}`;
+        count.innerHTML = `Найдено: <strong>${stations.length}</strong>`;
       } catch (error) {
         count.textContent = "Ошибка загрузки данных";
         tbody.innerHTML = "";
+        cards.innerHTML = "";
         empty.hidden = false;
       }
     }
@@ -374,18 +649,57 @@
         )
         .join("");
 
+      cards.innerHTML = stations
+        .map(
+          (s) => `
+            <article class="card">
+              <div class="card-head">
+                <span class="station">${escapeHtml(s.station)}</span>
+                ${badge(s.min_time)}
+              </div>
+              <div class="card-grid">
+                <div>
+                  <span class="cell-label">До Тульской</span>
+                  ${cardBadge(s.to_tulskaya)}
+                </div>
+                <div>
+                  <span class="cell-label">До ЗИЛ</span>
+                  ${cardBadge(s.to_zil)}
+                </div>
+                <div>
+                  <span class="cell-label">Лучшая цель</span>
+                  <span class="badge block">${escapeHtml(s.best_target)}</span>
+                </div>
+              </div>
+            </article>
+          `
+        )
+        .join("");
+
       empty.hidden = stations.length !== 0;
     }
 
     maxMinutes.addEventListener("input", () => {
       maxLabel.textContent = `${maxMinutes.value} мин`;
+      updateChips();
+    });
+
+    maxMinutes.addEventListener("change", loadData);
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        maxMinutes.value = chip.dataset.minutes;
+        maxLabel.textContent = `${maxMinutes.value} мин`;
+        updateChips();
+        loadData();
+      });
     });
 
     q.addEventListener("input", debounce(loadData));
     target.addEventListener("change", loadData);
-    maxMinutes.addEventListener("change", loadData);
     sort.addEventListener("change", loadData);
 
+    updateChips();
     loadData();
   </script>
 </body>
