@@ -223,6 +223,65 @@
   </div>
 
   <script>
+    // Static fallback: when the page is served without a backend (e.g. GitHub Pages),
+    // we load data/stations.json directly and filter/sort in the browser.
+    let staticStations = null;
+
+    async function loadStationsStatic() {
+      if (staticStations === null) {
+        const response = await fetch("data/stations.json");
+        if (!response.ok) throw new Error("Failed to load stations.json");
+        const raw = await response.json();
+        staticStations = raw
+          .map((item) => {
+            const station = String(item.station || "").trim();
+            const to_tulskaya = Number(item.to_tulskaya);
+            const to_zil = Number(item.to_zil);
+            if (!station || Number.isNaN(to_tulskaya) || Number.isNaN(to_zil)) return null;
+            return {
+              station,
+              to_tulskaya,
+              to_zil,
+              min_time: Math.min(to_tulskaya, to_zil),
+              best_target: to_tulskaya <= to_zil ? "Тульская" : "ЗИЛ",
+            };
+          })
+          .filter(Boolean);
+      }
+      return staticStations;
+    }
+
+    function filterSortStatic(stations, params) {
+      const q = (params.get("q") || "").trim().toLowerCase();
+      const target = params.get("target") || "any";
+      const maxMinutes = Number(params.get("max_minutes") || "0");
+      const sort = params.get("sort") || "min";
+
+      let result = stations.slice();
+
+      if (q) result = result.filter((s) => s.station.toLowerCase().includes(q));
+
+      if (target === "tulskaya") {
+        result = result.filter((s) => s.to_tulskaya <= maxMinutes);
+      } else if (target === "zil") {
+        result = result.filter((s) => s.to_zil <= maxMinutes);
+      } else {
+        result = result.filter((s) => Math.min(s.to_tulskaya, s.to_zil) <= maxMinutes);
+      }
+
+      if (sort === "station") {
+        result.sort((a, b) => a.station.localeCompare(b.station, "ru"));
+      } else if (sort === "tulskaya") {
+        result.sort((a, b) => a.to_tulskaya - b.to_tulskaya);
+      } else if (sort === "zil") {
+        result.sort((a, b) => a.to_zil - b.to_zil);
+      } else {
+        result.sort((a, b) => a.min_time - b.min_time);
+      }
+
+      return result;
+    }
+
     const q = document.getElementById("q");
     const target = document.getElementById("target");
     const maxMinutes = document.getElementById("max_minutes");
@@ -275,15 +334,24 @@
       count.textContent = "Загрузка…";
 
       try {
-        const response = await fetch(`/api/stations?${params.toString()}`);
+        const response = await fetch(`api/stations?${params.toString()}`, {
+          headers: { Accept: "application/json" },
+        });
 
-        if (!response.ok) {
-          throw new Error("Request failed");
+        let stations;
+
+        if (response.ok && (response.headers.get("content-type") || "").includes("json")) {
+          // FastAPI backend is available — use the JSON API.
+          const data = await response.json();
+          stations = data.stations || [];
+        } else {
+          // Static hosting (e.g. GitHub Pages): filter/sort data/stations.json in the browser.
+          const all = await loadStationsStatic();
+          stations = filterSortStatic(all, params);
         }
 
-        const data = await response.json();
-        render(data.stations || []);
-        count.textContent = `Найдено: ${data.count ?? 0}`;
+        render(stations);
+        count.textContent = `Найдено: ${stations.length}`;
       } catch (error) {
         count.textContent = "Ошибка загрузки данных";
         tbody.innerHTML = "";
