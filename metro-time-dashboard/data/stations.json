@@ -1,0 +1,42 @@
+[
+  {
+    "station": "Тульская",
+    "to_tulskaya": 0,
+    "to_zil": 19
+  },
+  {
+    "station": "ЗИЛ",
+    "to_tulskaya": 19,
+    "to_zil": 0
+  },
+  {
+    "station": "Добрынинская / Серпуховская",
+    "to_tulskaya": 3,
+    "to_zil": 22
+  },
+  {
+    "station": "Автозаводская",
+    "to_tulskaya": 15,
+    "to_zil": 3
+  },
+  {
+    "station": "Нагатинская / Верхние котлы",
+    "to_tulskaya": 4,
+    "to_zil": 3
+  },
+  {
+    "station": "Полянка",
+    "to_tulskaya": 5,
+    "to_zil": 24
+  },
+  {
+    "station": "Павелецкая",
+    "to_tulskaya": 8,
+    "to_zil": 17
+  },
+  {
+    "station": "Октябрьская",
+    "to_tulskaya": 8,
+    "to_zil": 20
+  }
+]

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Метро: Тульская / ЗИЛ</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f4f5f7;
+      color: #101215;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .sub {
+      margin: 0 0 20px;
+      color: #5c6470;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
+      margin-bottom: 16px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 12px;
+      align-items: end;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #5c6470;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 0 12px;
+      font: inherit;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    input[type="range"] {
+      padding: 0;
+      border: none;
+      height: auto;
+    }
+
+    .range-value {
+      font-weight: 700;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #5c6470;
+      margin-bottom: 10px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #edf0f3;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #fafafa;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .station {
+      font-weight: 650;
+    }
+
+    .badge {
+      display: inline-block;
+      min-width: 58px;
+      text-align: center;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .best {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .ok {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .far {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .empty {
+      padding: 24px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 900px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Станции метро: до Тульской или ЗИЛ</h1>
+    <p class="sub">Локальный дашборд на FastAPI: поиск, фильтр по времени и сортировка.</p>
+
+    <div class="panel">
+      <div class="controls">
+        <div>
+          <label for="q">Поиск станции</label>
+          <input id="q" type="search" placeholder="Например: Павелецкая" />
+        </div>
+
+        <div>
+          <label for="target">Цель</label>
+          <select id="target">
+            <option value="any">Любая из двух</option>
+            <option value="tulskaya">До Тульской</option>
+            <option value="zil">До ЗИЛ</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="max_minutes">
+            Лимит времени: <span id="maxLabel" class="range-value">40 мин</span>
+          </label>
+          <input id="max_minutes" type="range" min="0" max="60" step="1" value="40" />
+        </div>
+
+        <div>
+          <label for="sort">Сортировка</label>
+          <select id="sort">
+            <option value="min">Лучшее время</option>
+            <option value="station">Станция</option>
+            <option value="tulskaya">До Тульской</option>
+            <option value="zil">До ЗИЛ</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta">
+      <span id="count">Загрузка…</span>
+      <span>Показываются станции, где время до выбранной цели не превышает лимит.</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Станция</th>
+            <th>До Тульской</th>
+            <th>До ЗИЛ</th>
+            <th>Лучшее время</th>
+            <th>Лучшая цель</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="empty" class="empty" hidden>
+        Ничего не найдено. Попробуйте увеличить лимит времени или изменить поиск.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const q = document.getElementById("q");
+    const target = document.getElementById("target");
+    const maxMinutes = document.getElementById("max_minutes");
+    const maxLabel = document.getElementById("maxLabel");
+    const sort = document.getElementById("sort");
+    const tbody = document.getElementById("tbody");
+    const count = document.getElementById("count");
+    const empty = document.getElementById("empty");
+
+    function debounce(fn, ms = 250) {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), ms);
+      };
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function badge(minutes) {
+      if (minutes === null || minutes === undefined) {
+        return `<span class="badge far">—</span>`;
+      }
+
+      let cls = "far";
+
+      if (minutes <= 10) {
+        cls = "best";
+      } else if (minutes <= 25) {
+        cls = "ok";
+      }
+
+      return `<span class="badge ${cls}">${minutes} мин</span>`;
+    }
+
+    async function loadData() {
+      const params = new URLSearchParams({
+        q: q.value.trim(),
+        target: target.value,
+        max_minutes: maxMinutes.value,
+        sort: sort.value,
+      });
+
+      count.textContent = "Загрузка…";
+
+      try {
+        const response = await fetch(`/api/stations?${params.toString()}`);
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        const data = await response.json();
+        render(data.stations || []);
+        count.textContent = `Найдено: ${data.count ?? 0}`;
+      } catch (error) {
+        count.textContent = "Ошибка загрузки данных";
+        tbody.innerHTML = "";
+        empty.hidden = false;
+      }
+    }
+
+    function render(stations) {
+      tbody.innerHTML = stations
+        .map(
+          (s) => `
+            <tr>
+              <td class="station">${escapeHtml(s.station)}</td>
+              <td>${badge(s.to_tulskaya)}</td>
+              <td>${badge(s.to_zil)}</td>
+              <td>${badge(s.min_time)}</td>
+              <td>${escapeHtml(s.best_target)}</td>
+            </tr>
+          `
+        )
+        .join("");
+
+      empty.hidden = stations.length !== 0;
+    }
+
+    maxMinutes.addEventListener("input", () => {
+      maxLabel.textContent = `${maxMinutes.value} мин`;
+    });
+
+    q.addEventListener("input", debounce(loadData));
+    target.addEventListener("change", loadData);
+    maxMinutes.addEventListener("change", loadData);
+    sort.addEventListener("change", loadData);
+
+    loadData();
+  </script>
+</body>
+</html>
